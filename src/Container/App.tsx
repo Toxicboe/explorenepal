@@ -13,6 +13,8 @@ import {
   Rate,
   Trek,
   Landing,
+  DestinationDetail,
+  GuideInformation,
 } from "../Components/Page";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, LoginPage, NotFound, ContactUsPage,  } from "../Pages";
@@ -41,6 +43,8 @@ function App() {
         <Route path="destination" element={<Destination/>}/>
         <Route path="trek" element={<Trek/>}/>
         <Route path="landing" element={<Landing/>}/>
+        <Route path="destinationdetail" element={<DestinationDetail/>}/>
+        <Route path="guideinformation" element={<GuideInformation/>}/>
       </Routes>
     </BrowserRouter>
   );

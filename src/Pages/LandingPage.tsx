@@ -10,6 +10,7 @@ const LandingPage = () => {
   return (
     <div>
         <ResponsiveNavbar/>
+        <AboutUs/>
     </div>
   )
 }

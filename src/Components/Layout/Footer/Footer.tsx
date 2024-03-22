@@ -41,7 +41,7 @@
 // export default Footer
 
 import React from "react";
-import { FaInstagram, FaFacebook, FaGoogle, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaFacebook,  FaYoutube, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -52,8 +52,8 @@ const Footer = () => {
             <h3>Follow Us </h3>
             <FaInstagram size={30} color="#833AB4" className="mx-2" />
             <FaFacebook size={30} color="#3B5998" className="mx-1" />
-            <FaGoogle size={30} color="#DB4437" className="mx-1" />
-            <FaYoutube size={30} color="#FF0000" className="mx-2" />
+            <FaYoutube size={30} color="#DB4437" className="mx-1" />
+            <FaTwitter size={30} color="#FF0000" className="mx-2" />
             <p className="mt-3 text-light " style={{marginTop:"70px"}}>
               About Us <br /> Contact Us <br />
               Privacy and Policy <br /> Terms and Conditions

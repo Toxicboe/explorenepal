@@ -12,6 +12,9 @@ import Rate from './Rate/Rate'
 import Destination from './Destination/Destination'
 import Trek from './Trek/Trek'
 import Landing from './Landing/Landing'
+import DestinationDetail from './DestinationDetail/DestinationDetail'
+import ResponsiveNavbar  from '../Layout/Navbar/ResponsiveNavbar'
+import GuideInformation from './GuideInformation/GuideImformation'
 
 
-export {Booking,ContactUs,Privacy,Login,TaC,Destination,UserProfile,Register,AboutUs,WhyUs,Service,Rate,Trek,Landing}
+export {Booking,ContactUs,Privacy,Login,TaC,Destination,UserProfile,Register,AboutUs,WhyUs,Service,Rate,Trek,Landing,DestinationDetail,ResponsiveNavbar,GuideInformation}

@@ -9,7 +9,6 @@ const AboutUsPage = () => {
         <div>
             <ResponsiveNavbar/>
             <AboutUs/>
-            <Footer/>
         </div>
         
      

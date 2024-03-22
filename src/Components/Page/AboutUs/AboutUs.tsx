@@ -6,7 +6,7 @@
 // const AboutUs = () => {
 //   return (
 //     <div className="bg-info">
-     
+
 //       <div className="container">
 //         <h1 className="text-center" style={{ fontStyle: "italic" }}>
 //           About Us
@@ -47,36 +47,75 @@
 
 // export default AboutUs;
 
-
-import React from 'react';
-import khatpad from '../../../assets/Images/khaptad.jpg';
+import React from "react";
+import khatpad from "../../../assets/Images/khaptad.jpg";
 
 const AboutUs = () => {
   return (
-    <div className='bg-info min-vh-100 p-5 my-0 rounded-5'>
-    
-  
-        <h1 className="d-flex justify-content-center align-items-center " style={{ fontSize: "60px" }}>About Us</h1>
+    // <div className='bg-info rounded-5'>
+    <div className="container-fluid p-2 bg-info align-items-center justify-content-center rounded-5 vh-100 ">
+      <h1
+        className="d-flex justify-content-center align-items-center "
+        style={{ fontSize: "60px" }}
+      >
+        About Us
+      </h1>
 
-        <img
-          src={khatpad}
-          alt="kdjj"
-          className='w-100 my-4'
-      
-          style={{ objectFit: "cover", borderRadius: "25px" ,height:"360px"}}
-        />
+      <img
+        src={khatpad}
+        alt="kdjj"
+        className="w-100 my-4"
+        style={{ objectFit: "cover", borderRadius: "25px", height: "360px" }}
+      />
 
-        <div className='mt-3'>
+      <div className="mt-3">
         <p className="justify-content-center">
-          Welcome to Explore Nepal, your gateway to the breathtaking beauty and rich cultural tapestry of this Himalayan jewel. Our web app is a labor of love dedicated to showcasing the diverse landscapes, vibrant traditions, and hidden gems that make Nepal a truly unique destination. Immerse yourself in the stunning mountain vistas, discover ancient temples, and connect with the warm-hearted locals who make this country so special. Whether you're an avid trekker seeking adventure, a history enthusiast delving into centuries-old heritage, or a wanderer yearning for a serene escape, Explore Nepal is your digital companion on a journey of discovery. Join us as we celebrate the splendor of Nepal, and let this platform be your virtual passport to an unforgettable experience in the heart of the Himalayas."
+          Welcome to Explore Nepal, your gateway to the breathtaking beauty and
+          rich cultural tapestry of this Himalayan jewel. Our web app is a labor
+          of love dedicated to showcasing the diverse landscapes, vibrant
+          traditions, and hidden gems that make Nepal a truly unique
+          destination. Immerse yourself in the stunning mountain vistas,
+          discover ancient temples, and connect with the warm-hearted locals who
+          make this country so special. Whether you're an avid trekker seeking
+          adventure, a history enthusiast delving into centuries-old heritage,
+          or a wanderer yearning for a serene escape, Explore Nepal is your
+          digital companion on a journey of discovery. Join us as we celebrate
+          the splendor of Nepal, and let this platform be your virtual passport
+          to an unforgettable experience in the heart of the Himalayas."
         </p>
-
-        </div>
-          
-          </div>
-  
-
+      </div>
+    </div>
   );
 };
 
 export default AboutUs;
+
+// import React from 'react';
+// import khatpad from '../../../assets/Images/khaptad.jpg';
+
+// const AboutUs = () => {
+//   return (
+//     <div className="container-fluid p- bg-info rounded-5 min-vh-100" style={{width:"1500px"}}>
+//       <div className="row justify-content-center align-items-center">
+//         <div className="col-md-12">
+//           <h1 className="text-center mb-4" style={{ fontSize: "60px" }}>About Us</h1>
+
+//           <img
+//             src={khatpad}
+//             alt="kdjj"
+//             className='img-fluid rounded-3'
+//             style={{ objectFit: "cover", height: "360px", width:"100%"}}
+//           />
+
+//           <div className='mt-4'>
+//             <p className="text-center">
+//               Welcome to Explore Nepal, your gateway to the breathtaking beauty and rich cultural tapestry of this Himalayan jewel. Our web app is a labor of love dedicated to showcasing the diverse landscapes, vibrant traditions, and hidden gems that make Nepal a truly unique destination. Immerse yourself in the stunning mountain vistas, discover ancient temples, and connect with the warm-hearted locals who make this country so special. Whether you're an avid trekker seeking adventure, a history enthusiast delving into centuries-old heritage, or a wanderer yearning for a serene escape, Explore Nepal is your digital companion on a journey of discovery. Join us as we celebrate the splendor of Nepal, and let this platform be your virtual passport to an unforgettable experience in the heart of the Himalayas.
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default AboutUs;

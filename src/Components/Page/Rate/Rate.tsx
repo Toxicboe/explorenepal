@@ -124,7 +124,7 @@ import { ResponsiveNavbar } from '../../Layout';
 
 const Rate = () => {
   return (
-    <div className="container-fluid bg-info min-vh-100 rounded-5">
+    <div className="container bg-info rounded-5">
       <div className="row justify-content-center align-items-center">
         <div className="col-lg-4 col-md-6 col-sm-8 col-10 g-5 text-center border-end border-dark">
           <h4 className="mb-3">Tell us, how was your visit?</h4>

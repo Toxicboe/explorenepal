@@ -166,12 +166,14 @@ import './Booking.css';
 import { faSearchengin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ResponsiveNavbar } from '..';
 
 type Props = {}
 
 const Booking = (props: Props) => {
   return (
     <div className="d-flex justify-content-center align-self-center min-vh-100 h-100 bg-info ">
+      
     <div className="container d-flex justify-content-center align-self-center h-100 w-100 ">
       <div className="row   d-flex justify-content-center align-self-center bg-info">
           <h1 className="d-flex justify-content-center align-items-center ">

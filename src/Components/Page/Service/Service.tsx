@@ -95,7 +95,7 @@ import Simba from "../../../assets/Images/simba.jpg";
 const Service = () => {
   return (
     <div
-      className="container-fluid p-5 bg-info min-vh-100 d-flex align-items-center justify-content-center rounded-5"
+      className="container p-5 bg-info d-flex align-items-center justify-content-center rounded-5"
       style={{ justifyContent: "space-between" }}
     >
       <div className="row">

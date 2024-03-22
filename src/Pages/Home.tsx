@@ -7,9 +7,7 @@ import { Footer, Header } from '../Components/Layout'
 const Home = ()=> {
   return (
     <div>
-      <Header/>
-      <Footer/>
-      
+      <Header/> 
     </div>
   )
 }

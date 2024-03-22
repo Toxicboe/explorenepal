@@ -5,9 +5,9 @@ import { Login } from '../Components/Page'
 const LoginPage = () => {
   return (
     <div>
-        <Header/>
+        
         <Login/>
-        <Footer/>
+        
     </div>
   )
 }
