@@ -45,6 +45,7 @@ function App() {
         <Route path="landing" element={<Landing/>}/>
         <Route path="destinationdetail" element={<DestinationDetail/>}/>
         <Route path="guideinformation" element={<GuideInformation/>}/>
+        <Route path="/booking" element={<Booking/>}/>
       </Routes>
     </BrowserRouter>
   );
