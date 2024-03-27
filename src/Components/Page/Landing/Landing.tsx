@@ -1,7 +1,7 @@
 import React from 'react'
-import { Footer, ResponsiveNavbar } from '../../Layout'
-import { Home } from '@/src/Pages'
-import { AboutUs, Destination, Rate, Service, Trek, WhyUs } from '..'
+import { Footer } from '../../Layout'
+
+import { AboutUs, Rate, Service, Trek, WhyUs } from '..'
 import { Header } from '../../Layout'
 
 
@@ -10,7 +10,7 @@ const Landing = () => {
     <div  style={{backgroundColor: "#D9D9D9"}}>
       <Header/>
       <br/>
-      <Destination/>
+     
       <br/>
       <Service/>
       <br/>

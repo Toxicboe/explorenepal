@@ -5,34 +5,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faLinkedinIn,faFacebook ,faGoogle} from '@fortawesome/free-brands-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useLoginUserMutation } from '../../../Apis/authApi';
+import { apiResponse } from '@/src/Interfaces';
+import { MainLoader } from '../Loader';
 
 
 
 const Login = () => {
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+    const[error,setError]=useState("");
+    const[loginUser]=useLoginUserMutation();
+    const[Loading,setLoading]=useState(false);
+    const[userInput,setUserInput]=useState({
+        userName:"",
+        password:"",
+    })
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
-       // event.preventDefault();
-        const items = { userName, password };
-        console.warn(items);
-        fetch('https://localhost:44369/api/Account/login', {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(items)
-        }).then((result) => {
-            result.json().then((resp) => {
-                console.warn(resp);
-                navigate("/");
-            })
-        })
-    };
+
+    const handleUserInput = (
+        e: React.ChangeEvent<HTMLInputElement >
+      ) => {
+        const { name, value } = e.target;
+        //console.log(Loading);
+        setUserInput(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+      };
+
+
+      const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+          const response: apiResponse = await loginUser(userInput);
+          if (response) {
+            console.log(response);
+            // If login is successful, navigate to the login page
+            navigate("/");
+          }
+          else { 
+            setError(error);
+          }
+          
+        } catch (error) {
+          console.error("Error:", error);
+          
+        }
+        setLoading(false);
+      };
+      
+    
   return (
      <div className="d-flex justify-content-center align-items-center vh-100 rounded-4">
+        {Loading && <MainLoader />}
             <div className="row justify-content-end p-0 bg-danger m-0 p-0 w-50" style={{ borderRadius: "20px" }}>
                 <div className="col align-self-center p-0 h-50 rounded-5 col-sm-6">
                     <form onSubmit={handleSubmit} className="form-control" style={{ borderBottomRightRadius: "40px", borderTopRightRadius: "40px" }}>
@@ -50,10 +76,10 @@ const Login = () => {
                         </div>
                         <div className="d-flex justify-content-center align-items-center">or use your account</div>
                         <div className="mb-3 mt-3">
-                            <input type="email" className="form-control" id="email" placeholder="Enter email" name="email" value={userName} onChange={(e) => { setUserName(e.target.value) }} />
+                            <input type="email" className="form-control" id="email" placeholder="Enter email" name="userName" value={userInput.userName} onChange={handleUserInput} />
                         </div>
                         <div className="mb-3">
-                            <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="pswd" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                            <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="password" value={userInput.password} onChange={handleUserInput} />
                             <span className="d-flex justify-content-end">
                                 <Link to="/reset" className="text-primary text-decoration-none">Forget Password?</Link>
                             </span>
@@ -65,8 +91,9 @@ const Login = () => {
                         </div>
                         <div className="d-grid">
                             <div className="d-flex justify-content-center align-items-center mb-3">
-                                <Link to="/signup" className="text-primary fs-6 text-decoration-none">Don't have an Account?</Link>
+                                <Link to="/register" className="text-primary fs-6 text-decoration-none">Don't have an Account?</Link>
                             </div>
+                            {error && <p className='text-danger'>{error}</p>}
                             <button type="submit" className="btn btn-dark btn-block">Submit</button>
                         </div>
                     </form>
@@ -81,3 +108,109 @@ const Login = () => {
 }
 
 export default Login
+
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useLoginUserMutation } from '../../../Apis/authApi';
+
+// import { MainLoader } from '../Loader';
+// import { userModel, apiResponse } from '../../../Interfaces';
+// import jwt_decode from 'jwt-decode';
+// import { useDispatch } from 'react-redux';
+// import { setLoggedInUser } from '../../../Storage/Redux/userAuthSlice';
+
+
+
+// function Login() {
+//   const [error, setError] = useState('');
+//   const [loginUser] = useLoginUserMutation();
+//   const [loading, setLoading] = useState(false);
+//    const dispatch = useDispatch();
+//   const navigate = useNavigate();
+//   const [userInput, setUserInput] = useState({
+//     userName: '',
+//     password: '',
+//   });
+
+//   const handleUserInput = (
+//     e: React.ChangeEvent<HTMLInputElement >
+//   ) => {
+//     const { name, value } = e.target;
+  
+//     setUserInput(prevState => ({
+//       ...prevState,
+//       [name]: value
+//     }));
+//   };
+
+//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     try {
+//       const response: apiResponse = await loginUser({
+//         userName: userInput.userName,
+//         password: userInput.password,
+//       });
+//       if (response.data) {
+//         const { token } = response.data.result;
+//         const { userName,email,firstName, lastName, phoneNumber, location }: userModel = jwtdecode(token);
+//         localStorage.setItem('token', token);
+//         dispatch(setLoggedInUser({ id,userName, email,firstName, lastName, phoneNumber, location }));
+//         navigate('/');
+//       } else if (response.error) {
+//         setError(error);
+//       }
+//     } catch (error) {
+//       console.error('Error:', error);
+//       setError('An error occurred. Please try again.');
+//     }
+//     setLoading(false);
+//   };
+
+//   return (
+//     <div className="container text-center">
+//       {loading && <MainLoader />}
+//       <form method="post" onSubmit={handleSubmit}>
+//         <h1 className="mt-5">Login</h1>
+//         <div className="mt-5">
+//           <div className="col-sm-6 offset-sm-3 col-xs-12 mt-4">
+//             <input
+//               type="text"
+//               className="form-control"
+//               placeholder="Enter Username"
+//               required
+//               name="userName"
+//               value={userInput.userName}
+//               onChange={handleUserInput}
+//             />
+//           </div>
+
+//           <div className="col-sm-6 offset-sm-3 col-xs-12 mt-4">
+//             <input
+//               type="password"
+//               className="form-control"
+//               placeholder="Enter Password"
+//               required
+//               name="password"
+//               value={userInput.password}
+//               onChange={handleUserInput}
+//             />
+//           </div>
+//         </div>
+
+//         <div className="mt-2">
+//           {error && <p className="text-danger">{error}</p>}
+//           <button
+//             type="submit"
+//             className="btn btn-success"
+//             style={{ width: '200px' }}
+//           >
+//             Login
+//           </button>
+//         </div>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Login;

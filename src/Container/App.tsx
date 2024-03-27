@@ -1,10 +1,10 @@
-import { Footer, Header, ResponsiveNavbar } from "../Components/Layout";
+import { Footer,  ResponsiveNavbar } from "../Components/Layout";
 import {
-  Booking,
-  ContactUs,
+  // Booking,
+  // ContactUs,
   Privacy,
   TaC,
-  Destination,
+  //Destination,
   UserProfile,
   AboutUs,
   Register,
@@ -13,18 +13,24 @@ import {
   Rate,
   Trek,
   Landing,
-  DestinationDetail,
+ // DestinationDetail,
   GuideInformation,
 } from "../Components/Page";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, LoginPage, NotFound, ContactUsPage,  } from "../Pages";
+import { Routes, Route } from "react-router-dom";
+import {  Home,LoginPage, NotFound, ContactUsPage,  } from "../Pages";
+//import DestinationDetail from "../Components/Page/Destination/DestinationDetail";
+import DestinationDetails from "../Pages/DestinationDetails";
+
+
 // import Register from "../Components/Page/Login/Register";
 // import UserProfile from "../Components/Page/UserProfile/UserProfile";
 // import TaC from "../Components/Page/Privacy/TaC";
 
 function App() {
+
+  
   return (
-    <BrowserRouter>
+   
       <Routes>
         <Route index element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
@@ -40,14 +46,20 @@ function App() {
         <Route path="/whyus" element={<WhyUs />} />
         <Route path="/service" element={<Service />} />
         <Route path="rate" element={<Rate />} />
-        <Route path="destination" element={<Destination/>}/>
+        {/* <Route path="/destinationpage" element={<DestinationPage/>}/> */}
+        
         <Route path="trek" element={<Trek/>}/>
         <Route path="landing" element={<Landing/>}/>
-        <Route path="destinationdetail" element={<DestinationDetail/>}/>
+        {/* <Route path="/destinationdetails/:code" element={<DestinationDetail/>}/> */}
+        {/* <Route path="/destinationdetails" element={<DestinationDetails />}/>  */}
+        <Route path="/destinationdetails/:code" element={<DestinationDetails  />} />
+
         <Route path="guideinformation" element={<GuideInformation/>}/>
       </Routes>
-    </BrowserRouter>
+ 
   );
 }
 
 export default App;
+
+

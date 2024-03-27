@@ -1,5 +1,8 @@
-import React from 'react'
+
+
+
 import { Footer, Header } from '../Components/Layout'
+import DestinationList from '../Components/Page/Destination/DestinationList'
 
 
 
@@ -7,7 +10,12 @@ import { Footer, Header } from '../Components/Layout'
 const Home = ()=> {
   return (
     <div>
-      <Header/> 
+      <Header/>  
+      
+      <div className="row">
+        <DestinationList/>
+      </div>
+      <Footer/>
     </div>
   )
 }
