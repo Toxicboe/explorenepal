@@ -1,66 +1,72 @@
 // // DestinationList.js
-// import  { useEffect, useState } from "react";
-// import { DestinationModel } from "../../../Interfaces";
-// import DestinationCard from "./DestinationCard";
+// // import  { useEffect, useState } from "react";
+// // import { DestinationModel } from "../../../Interfaces";
+// // import DestinationCard from "./DestinationCard";
 
-// function DestinationList() {
-//     const [destinationItems, setDestinationItems] = useState<DestinationModel[]>([]);
+// // function DestinationList() {
+// //     const [destinationItems, setDestinationItems] = useState<DestinationModel[]>([]);
 
-//     useEffect(() => {
-//         fetch("https://localhost:7090/api/Destination")
-//             .then((response) => {
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then((data: DestinationModel[]) => {
-//                 console.log(data);
-//                 setDestinationItems(data);
-//             })
-//             .catch((error) => {
-//                 console.error("Error fetching destination data:", error);
-//             });
-//     }, []);
+// //     useEffect(() => {
+// //         fetch("https://localhost:7090/api/Destination")
+// //             .then((response) => {
+// //                 if (!response.ok) {
+// //                     throw new Error('Network response was not ok');
+// //                 }
+// //                 return response.json();
+// //             })
+// //             .then((data: DestinationModel[]) => {
+// //                 console.log(data);
+// //                 setDestinationItems(data);
+// //             })
+// //             .catch((error) => {
+// //                 console.error("Error fetching destination data:", error);
+// //             });
+// //     }, []);
 
-//     return (
-//         <div className="container row">
-//             {destinationItems.map((destinationItem: DestinationModel, index: number) => (
-//                 <DestinationCard destinationItem={destinationItem} key={index} />
-//             ))}
-//         </div>
+// //     return (
+// //         <div className="container row">
+// //             {destinationItems.map((destinationItem: DestinationModel, index: number) => (
+// //                 <DestinationCard destinationItem={destinationItem} key={index} />
+// //             ))}
+// //         </div>
         
-//     );
-// }
+// //     );
+// // }
 
-// export default DestinationList;
+// // export default DestinationList;
 
 
-import { useGetDestinationItemsQuery } from "../../../Apis/destinationItemApi";
+
+// DestinationList.js
+import { useEffect } from "react";
+import { DestinationModel } from "../../../Interfaces";
 import DestinationCard from "./DestinationCard";
+import { useDispatch } from "react-redux";
+import { setDestinationItem } from "../../../Storage/Redux/destinationItemSlice";
 import { MainLoader } from "../Loader";
-import {DestinationModel } from "../../../Interfaces";
-
+import { useGetDestinationItemsQuery } from "../../../Apis/destinationItemApi";
 
 function DestinationList() {
-  const { data, isLoading, isError } = useGetDestinationItemsQuery(null);
+  const dispatch = useDispatch();
+  const { data, isLoading } = useGetDestinationItemsQuery(null);
+
+  useEffect(() => {
+    if (!isLoading) {
+      console.log(data);
+      dispatch(setDestinationItem(data.result));
+    }
+  }, [data, isLoading, dispatch]);
 
   if (isLoading) {
-    return <MainLoader />;
-  }
-
-  if (isError) {
-    return <p>Error fetching destination items.</p>;
+    return <div><MainLoader /></div>;
   }
 
   return (
     <div className="container row">
-      {data &&
+      
+      {data  &&
         data.map((destinationItem: DestinationModel) => (
-          <DestinationCard
-            destinationItem={destinationItem}
-            key={destinationItem.code}
-          />
+          <DestinationCard destinationItem={destinationItem} key={destinationItem.code} />
         ))}
     </div>
   );

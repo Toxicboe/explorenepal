@@ -40,8 +40,8 @@
 
 // export default Footer
 
-import React from "react";
 import { FaInstagram, FaFacebook,  FaYoutube, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -55,8 +55,13 @@ const Footer = () => {
             <FaYoutube size={30} color="#DB4437" className="mx-1" />
             <FaTwitter size={30} color="#FF0000" className="mx-2" />
             <p className="mt-3 text-light " style={{marginTop:"70px"}}>
-              About Us <br /> Contact Us <br />
-              Privacy and Policy <br /> Terms and Conditions
+            <Link to="/aboutus" className="text-decoration-none text-reset">About Us</Link>
+      <br />
+      <Link to="/contactUs" className="text-decoration-none text-reset">Contact Us</Link>
+      <br />
+      <Link to="/privacy" className="text-decoration-none text-reset">Privacy and Policy</Link>
+      <br />
+      <Link to="/terms" className="text-decoration-none text-reset">Terms and Conditions</Link>
             </p>
             <p className="text-light mt-5">@2024 ExploreNepal.com</p>
             <p className="font-italic text-light">

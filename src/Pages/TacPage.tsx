@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Footer, Header } from '../Components/Layout'
 import TaC from '../Components/Page/Privacy/TaC'
 

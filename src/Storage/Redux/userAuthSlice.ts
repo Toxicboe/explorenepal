@@ -1,36 +1,30 @@
-import {createSlice } from "@reduxjs/toolkit";
-import {UserModel} from '../../Interfaces'
 
 
-const initialState:UserModel={
-  id:"",
-  userName:"",
-  email:"",
-  password:"",
-  confirmPassword:"",
-  firstName:"",
-  lastName:"",
-  location:"",
-  phoneNumber:""
-}
+import { createSlice } from "@reduxjs/toolkit";
+import { userModel } from "../../Interfaces";
 
+export const emptyUserState: userModel = {
+  fullName: "",
+  id: "",
+  email: "",
+  role: "",
+};
 
-export const userAuthSlice=createSlice({
-    name:"userAuth",
-    initialState:initialState,
-    reducers:{
-        setLoggedInUser:(state,action)=>{
-            state.id=action.payload.id;
-            state.firstName=action.payload.firstName;
-            state.lastName=action.payload.lastName;
-            state.email=action.payload.email;
-            state.userName=action.payload.userName;
-            state.password=action.payload.password;
-            state.confirmPassword=action.payload.confirmPassword;
-            state.location=action.payload.location;
-        },
-    },
+export const userAuthSlice = createSlice({
+  name: "userAuth",
+  initialState: emptyUserState,
+  reducers: {
+    setLoggedInUser: (state, action) => {
+        state.fullName = action.payload.fullName;
+        state.id = action.payload.id;
+        state.email = action.payload.email;
+        state.role = action.payload.role;
+      },
+  },
 });
 
-export const {setLoggedInUser}=userAuthSlice.actions;
-export const userAuthReducer=userAuthSlice.reducer;
+export const { setLoggedInUser } = userAuthSlice.actions;
+export const userAuthReducer = userAuthSlice.reducer;
+
+
+

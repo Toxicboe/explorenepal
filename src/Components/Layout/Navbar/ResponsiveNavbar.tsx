@@ -1,8 +1,6 @@
-
 // import React from 'react'
 // import { Navbar, Nav, Container, NavLink } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
-
 
 // type Props = {}
 
@@ -58,8 +56,6 @@
 // export default ResponsiveNavbar;
 
 
-
-// import React from 'react';
 // import { Navbar, Nav, Container, NavLink } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 
@@ -114,61 +110,106 @@
 // export default ResponsiveNavbar;
 
 
-import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
+
+import { userModel } from "../../../Interfaces";
+import { RootState } from "../../../Storage/Redux/store";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ResponsiveNavbar = () => {
+  const userData: userModel = useSelector(
+    (state: RootState) => state.userAuthStore
+  );
+
   return (
-    <Navbar expand="lg" >
+    <Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="#home" className='text-light'>Explore Nepal</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-light' />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center ">
+        <Navbar.Brand as={Link} to="/" className="text-light">
+          Explore Nepal
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-light" />
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
           <Nav className="mr-auto">
             <Nav.Item>
-              <Link to="/aboutus" className="nav-link text-light">About Us</Link>
+              <Link to="/aboutus" className="nav-link text-light">
+                About Us
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link to="/services" className="nav-link text-light">Our Services</Link>
+              <Link to="/service" className="nav-link text-light">
+                Our Services
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link to="/destination" className="nav-link text-light">Destination</Link>
+              <Link to="/destination" className="nav-link text-light">
+                Destination
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link to="/review" className="nav-link text-light">Review</Link>
+              <Link to="/review" className="nav-link text-light">
+                Review
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link to="/contactus" className="nav-link text-light">Contact Us</Link>
+              <Link to="/contactus" className="nav-link text-light">
+                Contact Us
+              </Link>
             </Nav.Item>
           </Nav>
           <Nav>
-            <Nav.Item className="text-light">
-            <Link
-                className="btn btn-success btn-outlined rounded-pill text-white m-4"
-                style={{
-                  border: "none",
-                  height: "40px",
-                  width: "100px",
-                  
-                }}
-                to="/login"
-              >
-                Login
-              </Link>
-              <Link
-                className="btn btn-success btn-outlined rounded-pill text-white m-4"
-                style={{
-                  border: "none",
-                  height: "40px",
-                  width: "100px",
-                  
-                }}
-                to="/register"
-              >
-                Register
-              </Link>
-            </Nav.Item>
+            
+            {userData.id ? (
+              <>
+                <Nav.Item>
+                  <span className="nav-link text-light">
+                    Welcome, {userData.fullName}
+                  </span>
+                </Nav.Item>
+                <Nav.Item>
+                  <button
+                    className="btn btn-success btn-outlined rounded-pill text-white mx-2"
+                    style={{
+                      border: "none",
+                      height: "40px",
+                      width: "100px",
+                    }}
+                  >
+                    Logout
+                  </button>
+                </Nav.Item>
+              </>
+            ) : (
+              <>
+                <Nav.Item>
+                <Link
+                    className="btn btn-success btn-outlined rounded-pill text-white mx-2"
+                    style={{
+                      border: "none",
+                      height: "40px",
+                      width: "100px",
+                    }}
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link
+                    className="btn btn-success btn-outlined rounded-pill text-white mx-2"
+                    style={{
+                      border: "none",
+                      height: "40px",
+                      width: "100px",
+                    }}
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </Nav.Item>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -177,3 +218,4 @@ const ResponsiveNavbar = () => {
 };
 
 export default ResponsiveNavbar;
+

@@ -11,3 +11,5 @@ export default interface apiResponse {
     };
     error?: unknown;
   }
+
+

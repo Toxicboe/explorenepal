@@ -37,9 +37,9 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/contactuspage" element={<ContactUsPage />} />
+        <Route path="/contactus" element={<ContactUsPage />} />
         <Route path="/privacy" element={<Privacy />} />
-        <Route path="/tac" element={<TaC />} />
+        <Route path="/terms" element={<TaC />} />
         <Route path="/responsivenavbar" element={<ResponsiveNavbar />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/aboutus" element={<AboutUs />} />

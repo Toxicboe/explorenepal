@@ -1,7 +1,6 @@
 
-
-
 import { Footer, Header } from '../Components/Layout'
+import { ContactUs, Rate, Service, WhyUs } from '../Components/Page'
 import DestinationList from '../Components/Page/Destination/DestinationList'
 
 
@@ -14,7 +13,12 @@ const Home = ()=> {
       
       <div className="row">
         <DestinationList/>
+
       </div>
+      <Rate/>
+      <Service/>
+      <WhyUs/>
+      <ContactUs/>
       <Footer/>
     </div>
   )

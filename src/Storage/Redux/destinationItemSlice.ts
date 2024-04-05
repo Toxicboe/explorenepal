@@ -5,7 +5,6 @@ const initialState={
     destinationItem:[],
 }
 
-
 export const destinationItemSlice=createSlice({
     name:"destinationItem",
     initialState:initialState,

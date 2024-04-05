@@ -1,3 +1,6 @@
+
+
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const authApi = createApi({
@@ -8,7 +11,7 @@ const authApi = createApi({
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (userData) => ({
-        url: "Account/register",
+        url: "account/register",
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -18,7 +21,7 @@ const authApi = createApi({
     }),
     loginUser: builder.mutation({
       query: (userCredentials) => ({
-        url: "Account/login",
+        url: "account/login",
         method: "POST",
         headers: {
           "Content-type": "application/json",
